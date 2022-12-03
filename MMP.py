@@ -34,7 +34,6 @@ def check_number(x) -> bool:
 #窗口
 mmp=ttk.Window(themename='darkly')#mmp窗口定义
 mmp.iconbitmap("./ICO/MMP-ICON.ico")#设置图标
-mmp.wm_attributes("-topmost",1)#将窗口置于顶层
 mmp.title("More Message Part")#mmp标题
 mmp.geometry("800x600")#mmp窗口尺寸
 number_check=mmp.register(check_number)#窗口内用户输入验证

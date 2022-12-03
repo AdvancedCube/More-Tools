@@ -12,7 +12,6 @@ def exitprogram():
 #主程序
 mw=ttk.Window(themename='superhero')#mw窗口定义
 mw.iconbitmap(".\\ICO\\MT-ICON.ico")#定义窗口图标
-mw.wm_attributes("-topmost",1)#将窗口置于顶层
 mw.title("More Tools")#mw标题
 mw.geometry("800x600")#mw窗口尺寸
 mainlabel=ttk.Label(mw,style="primary",text="欢迎来到More Tools",font=("Frutiger",24)).grid(column=0,row=0,padx=5,pady=5)
