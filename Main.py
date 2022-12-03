@@ -5,6 +5,8 @@ import sys#sys
 #定义函数
 def startmmp():
     os.system(".\\Python\\python.exe .\\MMP.py")
+def startccp():
+    os.system(".\\Caesar_Code_Part_Release\\Caesar_Code_Part.exe")
 def exitprogram():
     sys.exit()
 #主程序
@@ -16,7 +18,7 @@ mw.geometry("800x600")#mw窗口尺寸
 mainlabel=ttk.Label(mw,style="primary",text="欢迎来到More Tools",font=("Frutiger",24)).grid(column=0,row=0,padx=5,pady=5)
 tiplabel=ttk.Label(mw,style="primary",text="我们有如下几款产品:").grid(column=0,row=1,padx=5,pady=5)
 mmpbutton=ttk.Button(mw,style="success-outline",text="More Message:一款卓越的刷屏器",width=40,command=startmmp).grid(column=0,row=2,padx=5,pady=5)
-tp1button=ttk.Button(mw,style="success-outline",text="敬请期待",width=40).grid(column=0,row=3,padx=5,pady=5)
+tp1button=ttk.Button(mw,style="success-outline",text="凯撒密码工具",width=40,command=startccp).grid(column=0,row=3,padx=5,pady=5)
 tp2button=ttk.Button(mw,style="success-outline",text="敬请期待",width=40).grid(column=0,row=4,padx=5,pady=5)
 tp3button=ttk.Button(mw,style="success-outline",text="敬请期待",width=40).grid(column=0,row=5,padx=5,pady=5)
 tp4button=ttk.Button(mw,style="success-outline",text="敬请期待",width=40).grid(column=0,row=6,padx=5,pady=5)
