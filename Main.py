@@ -4,9 +4,7 @@ import os#os
 import sys#sys
 #定义函数
 def startmmp():
-    os.system(".\\Python\\python.exe .\\More_Message\\MMP.py")
-def startmcp():
-    os.system(".\\Python\\python.exe .\\More_Click\\MCP.py")
+    os.system(".\\Python\\python.exe .\\MMP.py")
 def exitprogram():
     sys.exit()
 #主程序
