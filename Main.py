@@ -5,27 +5,16 @@ import sys#sys
 import datetime
 #定义函数
 def startmmp():
-    os.system(".\\Python\\python.exe .\\MMP.py")
+    os.system("python .\\MMP.py")
 def startccp():
     os.system(".\\Caesar_Code_Part_Release\\Caesar_Code_Part.exe")
 def exitprogram():
     sys.exit()
-#读取日志文件
-date=open(".\\Date.log", 'a')
-def wt(log,zt):
-    nowtime = datetime.datetime.now()
-    nowtime = str(nowtime)
-    output = '['+zt+']'+nowtime+' (Main Output) '+log+'\n'
-    date.write(output)
 #主程序
 mw=ttk.Window(themename='superhero')#mw窗口定义
-wt("Created window","OK")
 mw.iconbitmap(".\\ICO\\MT-ICON.ico")#定义窗口图标
-wt("Set windows icon:.\\ICO\\MT-ICON.ico","OK")
 mw.title("More Tools")#mw标题
-wt("Set window title","OK")
 mw.geometry("800x600")#mw窗口尺寸
-wt("Set window finished","Finished")
 mainlabel=ttk.Label(mw,style="primary",text="欢迎来到More Tools",font=("Frutiger",24)).grid(column=0,row=0,padx=5,pady=5)
 tiplabel=ttk.Label(mw,style="primary",text="我们有如下几款产品:").grid(column=0,row=1,padx=5,pady=5)
 mmpbutton=ttk.Button(mw,style="success-outline",text="More Message:一款卓越的刷屏器",width=40,command=startmmp).grid(column=0,row=2,padx=5,pady=5)
@@ -45,6 +34,4 @@ tp13button=ttk.Button(mw,style="success-outline",text="敬请期待",width=40).g
 tp14button=ttk.Button(mw,style="success-outline",text="敬请期待",width=40).grid(column=1,row=8,padx=5,pady=5)
 tp15button=ttk.Button(mw,style="success-outline",text="敬请期待",width=40).grid(column=1,row=9,padx=5,pady=5)
 exitbutton=ttk.Button(mw,style="danger-outline",text="退出",width=20,command=exitprogram).grid(column=1,row=14,padx=5,pady=5)
-wt("Create Main Window finished","Finished")
 mw.mainloop()#保持mw窗口
-wt("Exit","OK")
