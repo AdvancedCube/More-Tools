@@ -2,6 +2,7 @@
 import ttkbootstrap as ttk#ttkbootstrap
 import os#os
 import sys#sys
+import datetime
 #定义函数
 def startmmp():
     os.system(".\\Python\\python.exe .\\MMP.py")
@@ -9,6 +10,13 @@ def startccp():
     os.system(".\\Caesar_Code_Part_Release\\Caesar_Code_Part.exe")
 def exitprogram():
     sys.exit()
+#读取日志文件
+date=open(".\\Date.log", 'a')
+def wt(log):
+    nowtime = datetime.datetime.now()
+    nowtime = str(nowtime)
+    output = '['+nowtime+']  (Main Output) '+log+'\n'
+    date.write(output)
 #主程序
 mw=ttk.Window(themename='superhero')#mw窗口定义
 mw.iconbitmap(".\\ICO\\MT-ICON.ico")#定义窗口图标
