@@ -5,7 +5,7 @@ import sys#sys
 import datetime
 #定义函数
 def startmmp():
-    os.system("python .\\MMP.py")
+    os.system(".\\More_Message_Part_Release\\MMP.exe")
 def startccp():
     os.system(".\\Caesar_Code_Part_Release\\Caesar_Code_Part.exe")
 def exitprogram():
