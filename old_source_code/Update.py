@@ -2,6 +2,9 @@ import json
 import requests
 import tkinter.messagebox
 import os
+import time
+os.system("taskkill /f /IM More-Tools.exe")
+time.sleep(5)
 with open(".\\version.json") as ver:
     loadver=json.load(ver)
 nowver=loadver["version"]
@@ -18,3 +21,5 @@ if(nowver<latestver):
         os.system(".\git\cmd\git.exe pull")
 else:
     tkinter.messagebox.showinfo("恭喜","你使用了最新版的More_Tools!")
+os.system(".\\More-Tools.exe")
+os.system("exit")
