@@ -6,8 +6,33 @@ import os#os
 import sys#sys
 import datetime
 import subprocess
+import zipfile
+import requests
 from tkinter import StringVar
+import json
 #os.system("@echo off")
+#加载配置
+with open(".\\config.json") as cfg:
+    loadcfg=json.load(cfg)
+#检查JDK
+def checkjdk():
+    if(os.path.exists(loadcfg["jdkpath"])==False):
+        ask=messagebox.askquestion("未找到JDK","此部分需要JDK来运行,但是未找到JDK,您可以下载,或者在config.json的jdkpath部分指定java.exe的绝对路径,是否在线下载？")
+        if(ask=="yes"):
+            messagebox.showinfo("准备就绪!","将在按下确定后下载，下载过程可能会花费几分钟，取决于网速，请耐心等待")
+            downloadjdk=requests.get("https://mirrors.huaweicloud.com/openjdk/19.0.1/openjdk-19.0.1_windows-x64_bin.zip")
+            with open("./jdk.zip","wb") as jdk_file:
+                jdk_file.write(downloadjdk.content)
+                jdk_file.flush() 
+            ext=zipfile.ZipFile("./jdk.zip")
+            ext.extractall("./")
+            ext.close()
+            os.remove("./jdk.zip")
+            messagebox.showinfo("完成!","下载完成,请重新进入")
+        else:
+            return
+    else:
+        return
 #主程序
 mw=ttk.Window(themename='superhero')#mw窗口定义
 mw.iconbitmap(".\\ICO\\MT-ICON.ico")#定义窗口图标
@@ -23,6 +48,11 @@ def startmmp():
 def startccp():
     #os.system(".\\CPP_Release\\Caesar_Code_Part.exe")
     subprocess.Popen(".\\CPP_Release\\Caesar_Code_Part.exe")
+def startmcp():
+    checkjdk()
+    if(os.path.exists(loadcfg["jdkpath"])):
+        code="\""+loadcfg["jdkpath"]+"\" -jar .\\mcp.jar"
+        os.system(code)
 def entersoft():
     global readsoft
     readsoft=selectcombobox.get()
@@ -30,6 +60,8 @@ def entersoft():
         startmmp()
     elif(readsoft=="Caesar Code"):
         startccp()
+    elif(readsoft=="Morse Code"):
+        startmcp()
 def exitprogram():
     os._exit(1)
 def intowebsite():
@@ -51,7 +83,7 @@ def updateprogram():
     os.system("exit")
 #定义组件
 mainlabel=ttk.Label(mw,style="primary",text="欢迎来到More Tools",font=("Frutiger",24)).grid(column=0,row=0,padx=5,pady=5)
-selectcombobox=ttk.Combobox(mw,style="primary",textvariable=selectcomboboxvar,state="readonly",width=50,value=("More Message","Caesar Code"))
+selectcombobox=ttk.Combobox(mw,style="primary",textvariable=selectcomboboxvar,state="readonly",width=50,value=("More Message","Caesar Code","Morse Code"))
 selectcombobox.current(0)
 selectcombobox.grid(column=0,row=1,padx=5,pady=5)
 enterbutton=ttk.Button(mw,style="primary",text="进入",command=entersoft,width=20).grid(column=1,row=2,padx=5,pady=5)
