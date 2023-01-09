@@ -89,8 +89,11 @@ def start_button():
     else:
         plan=2#plan为2
     #读入软件
-    if(softcombobox.get() == "微信" or softcombobox.get() == "钉钉" or softcombobox.get() == "文本文档" or softcombobox.get() == "其他按enter键发送的软件"):#按enter键发送的软件
+    if(softcombobox.get() == "钉钉" or softcombobox.get() == "文本文档" or softcombobox.get() == "其他按enter键发送的软件"):#按enter键发送的软件
         soft=0 #soft为0
+    elif(softcombobox.get() == "微信"){
+        soft=2 #soft为2
+    }
     else:#否则为按ctrl+enter发送
         soft=1 #soft为1
     #主体部分
@@ -117,8 +120,12 @@ def start_button():
         pyautogui.hotkey("ctrl","v")#粘贴内容
         if(soft==0):
             pyautogui.press("enter")#按下回车
-        else:
+        elif(soft==1):
             pyautogui.press("ctrl","enter")#按下ctrl+enter
+        else:
+            pyautogui.press("enter")#按下回车
+            if(i%100==0):
+                time.sleep(5)
     mmp.state("normal")#恢复窗口
     if(emergency==False):
         messagebox.showinfo("提示","发送结束")
